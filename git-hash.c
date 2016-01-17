@@ -1,6 +1,15 @@
 #include <stdio.h>
 #include <string.h>
 
+#ifdef __unix__
+
+#elif defined(_WIN32) || defined(WIN32)
+
+//#define OS_Windows
+#define popen _popen
+#define pclose _pclose
+#endif
+
 char static str[137];
 
 int main()
