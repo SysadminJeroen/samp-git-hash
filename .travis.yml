@@ -1,1 +1,2 @@
-install: gcc git-hash.c -o git-hash
+language: c
+script: gcc git-hash.c -o git-hash
