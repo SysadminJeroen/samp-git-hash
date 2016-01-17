@@ -1,1 +1,1 @@
-install: gcc get-hash.c -o get-hash
+install: gcc git-hash.c -o git-hash
