@@ -23,7 +23,7 @@ int main()
     strcat(str, "#endif\n\n");
     strcat(str, "#define GitHash ");
     getGitSha(str);
-    store_data("githash.inc", str);
+    store_data("git-hash.inc", str);
     //printf("%d\n", strlen(str)); //Debug function, to count the string size if there are any changes to 'str'.
 }
 
