@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <time.h>
 
 #ifdef __unix__
 
@@ -10,24 +11,29 @@
 #define pclose _pclose
 #endif
 
-char static str[137];
+char static str[273];
 
 int main()
 {
-    if(!is_in_git_repo())
+    if(!IsCurrentlyInGitRepo())
         return 0;
     strcpy(str, "#if defined _INC_GIT_HASH\n");
     strcat(str, "    #endinput\n");
     strcat(str, "#else\n");
     strcat(str, "    #define _INC_GIT_HASH\n");
     strcat(str, "#endif\n\n");
-    strcat(str, "#define GitHash ");
-    getGitSha(str);
+	strcat(str, "/*\n");
+	strcat(str, "git-hash 1.0 (https://github.com/Jeroen52/samp-git-hash)\n");
+	strcat(str, "This file has been generated at ");
+	AppendCurrentTimeToString(str);
+	strcat(str, "*/\n\n");
+    strcat(str, "#define _INC_GIT_HASH_GIT_HASH ");
+    AppendGitShaToString(str);
     store_data("git-hash.inc", str);
     //printf("%d\n", strlen(str)); //Debug function, to count the string size if there are any changes to 'str'.
 }
 
-getGitSha(char *target)
+AppendGitShaToString(char *target)
 {
     FILE *sha = popen("git rev-parse --verify HEAD -q", "r");
     char buf[40];
@@ -37,11 +43,21 @@ getGitSha(char *target)
     pclose(sha);
 }
 
-int is_in_git_repo()
+int IsCurrentlyInGitRepo()
 {
     if(system("git rev-parse --verify HEAD -q"))
         return 0;
     return 1;
+}
+
+AppendCurrentTimeToString(char *target)
+{
+	time_t rawtime;
+	struct tm * timeinfo;
+
+	time ( &rawtime );
+	timeinfo = localtime ( &rawtime );
+	strcat(str, asctime (timeinfo));
 }
 
 store_data(const char *filepath, const char *data)
