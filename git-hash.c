@@ -11,7 +11,7 @@
 #define pclose _pclose
 #endif
 
-char static str[273];
+char static str[274];
 
 int main()
 {
@@ -27,8 +27,10 @@ int main()
 	strcat(str, "This file has been generated at ");
 	AppendCurrentTimeToString(str);
 	strcat(str, "*/\n\n");
-    strcat(str, "#define _INC_GIT_HASH_GIT_HASH ");
+    strcat(str, "#define _INC_GIT_HASH_GIT_HASH \"");
     AppendGitShaToString(str);
+	str[(strlen(str)-1)] = '\0';
+	strcat(str, "\"");
     store_data("git-hash.inc", str);
     //printf("%d\n", strlen(str)); //Debug function, to count the string size if there are any changes to 'str'.
 }
