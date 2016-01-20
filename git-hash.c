@@ -2,11 +2,15 @@
 #include <string.h>
 #include <time.h>
 
+//#define DEBUG
+
 #ifdef __unix__
 
 #elif defined(_WIN32) || defined(WIN32)
 
-//#define OS_Windows
+#ifdef DEBUG
+	#define OS_Windows
+#endif
 #define popen _popen
 #define pclose _pclose
 #endif
@@ -32,7 +36,12 @@ int main()
 	str[(strlen(str)-1)] = '\0';
 	strcat(str, "\"");
     store_data("git-hash.inc", str);
-    //printf("%d\n", strlen(str)); //Debug function, to count the string size if there are any changes to 'str'.
+	#ifdef DEBUG
+		printf("%d\n", strlen(str));
+		#ifdef OS_Windows
+			getchar();
+		#endif
+	#endif
 }
 
 AppendGitShaToString(char *target)
