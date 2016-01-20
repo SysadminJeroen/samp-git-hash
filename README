@@ -1,0 +1,47 @@
+samp-git-hash
+
+Copyright (c) 2016, Jeroen de Neef, <jeroen@jeroendeneef.com>
+All rights reserved
+
+DESCRIPTION
+-----------
+
+I was looking for a way to automatically include and define the Git hash of a project before compiling.
+So I started typing and after a night of learning C this came out of it.
+
+OVERVIEW
+--------
+
+samp-git-hash includes:
+
+git-hash:
+	The binary that generates the include for Pawn.
+	
+DEPENDENCIES
+------------
+
+This project has dependencies, make sure that you meet them.
+	Git 1.7.9.3
+	
+BINARIES
+--------
+
+There are compiled binaries available for Windows operating systems.
+It is very easy to compile this for Linux, but there is no official SA:MP Pawn compiler for Linux.
+
+INSTALLATION
+------------
+
+Compile:
+	git-hash.c
+		Using GCC: gcc git-hash.c -o git-hash
+
+SUPPORT
+-------
+
+Create an issue at <https://github.com/Jeroen52/samp-git-hash> if you need any help, or post it in the official SA:MP thread at <http://forum.sa-mp.com/showthread.php?p=3644399#post3644399>.
+
+HOW TO CONTRIBUTE
+-----------------
+
+Fork this repository and make a pull request when done.
