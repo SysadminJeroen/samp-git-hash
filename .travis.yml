@@ -1,2 +1,2 @@
 language: c
-script: gcc git-hash.c -o git-hash
+script: make && make clean

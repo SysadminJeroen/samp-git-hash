@@ -35,6 +35,7 @@ INSTALLATION
 Compile:
 	git-hash.c
 		Using GCC: gcc git-hash.c -o git-hash
+		Using Makefile: make
 
 SUPPORT
 -------
