@@ -9,10 +9,10 @@ CC= gcc
 CFLAGS=
 
 all: git-hash.c
-        $(CC) $(CFLAGS) git-hash.c -o git-hash
+		$(CC) $(CFLAGS) git-hash.c -o git-hash
 
 install: all
-        @echo are you kidding'??'
+		@echo are you kidding'??'
 
 clean:
-        rm git-hash
+		rm git-hash
