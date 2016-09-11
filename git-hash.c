@@ -27,7 +27,7 @@ int main()
     strcat(str, "    #define _INC_GIT_HASH\n");
     strcat(str, "#endif\n\n");
 	strcat(str, "/*\n");
-	strcat(str, " * git-hash 1.0 (https://github.com/Jeroen52/samp-git-hash)\n");
+	strcat(str, " * git-hash 1.1.2 (https://github.com/Jeroen52/samp-git-hash)\n");
 	strcat(str, " * This file has been generated at ");
 	AppendCurrentTimeToString(str);
 	strcat(str, " */\n\n");
