@@ -8,7 +8,9 @@ stages:
 test:linux:
     stage: test
     script: make && make clean
-
+    tags:
+    - linux
+    - git
 build:linux:
     stage: build
     script: make
