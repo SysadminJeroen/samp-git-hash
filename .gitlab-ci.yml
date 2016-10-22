@@ -1,16 +1,20 @@
+stages:
+- clean
+- test
+- build
+
 before_script:linux:
+    stage: clean
     script: rm -rf *
     tags:
     - linux
     - git
 
-stages:
-- test
-- build
-
 test:linux:
     stage: test
     script: make && make clean
+    dependencies:
+    - clean:linux
     tags:
     - linux
     - git
