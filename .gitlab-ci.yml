@@ -1,5 +1,8 @@
 before_script:linux:
     script: rm -rf *
+    tags:
+    - linux
+    - git
 
 stages:
 - test
@@ -8,9 +11,9 @@ stages:
 test:linux:
     stage: test
     script: make && make clean
-    tags:
-    - linux
-    - git
+    dependencies:
+    - before_script:linux
+
 build:linux:
     stage: build
     script: make
