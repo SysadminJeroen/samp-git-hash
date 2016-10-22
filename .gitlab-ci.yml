@@ -1,0 +1,20 @@
+before_script:linux:
+    script: rm -rf *
+
+stages:
+- test
+- build
+
+test:linux:
+    stage: test
+    script: make && make clean
+
+build:linux:
+    stage: build
+    script: make
+    dependencies:
+    - test:linux
+    artifacts:
+        paths:
+        - git-hash
+        expire_in: 1 month
