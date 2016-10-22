@@ -14,7 +14,7 @@ test:linux:
     stage: test
     script: make && make clean
     dependencies:
-    - clean:linux
+    - before_script:linux
     tags:
     - linux
     - git
