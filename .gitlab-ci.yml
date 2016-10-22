@@ -20,6 +20,9 @@ build:linux:
     script: make
     dependencies:
     - test:linux
+    tags:
+    - linux
+    - git
     artifacts:
         paths:
         - git-hash
