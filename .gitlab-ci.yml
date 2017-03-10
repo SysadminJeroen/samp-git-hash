@@ -1,20 +1,13 @@
+image: git:latest
+   
+
 stages:
-- clean
 - test
 - build
-
-before_script:linux:
-    stage: clean
-    script: rm -rf *
-    tags:
-    - linux
-    - git
 
 test:linux:
     stage: test
     script: make && make clean
-    dependencies:
-    - before_script:linux
     tags:
     - linux
     - git
