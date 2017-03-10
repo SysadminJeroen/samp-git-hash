@@ -4,6 +4,9 @@
 
 //#define DEBUG
 
+#define MAX_SHA1_LENGTH 40
+#define MAX_INCLUDE_LENGTH 281
+
 #ifdef __unix__
 
 #elif defined(_WIN32) || defined(WIN32)
@@ -15,7 +18,7 @@
 #define pclose _pclose
 #endif
 
-char static str[281];
+char static str[MAX_INCLUDE_LENGTH];
 
 int main()
 {
@@ -47,7 +50,7 @@ int main()
 AppendGitShaToString(char *target)
 {
 	FILE *sha = popen("git rev-parse --verify HEAD -q", "r");
-	char buf[40];
+	char buf[MAX_SHA1_LENGTH];
 	while (fgets(buf, sizeof(buf), sha) != 0) {
 		strcat(target, buf);
 	}
